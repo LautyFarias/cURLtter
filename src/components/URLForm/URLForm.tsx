@@ -31,20 +31,29 @@ export default function URLForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
+      <form
+        className="flex w-full max-w-screen-lg"
+        onSubmit={form.handleSubmit(onSubmit)}
+      >
         <FormField
           control={form.control}
           name="url"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="w-full">
               <FormControl>
-                <Input placeholder="URL" {...field} />
+                <Input
+                  className="h-12 rounded-r-none text-lg"
+                  placeholder="URL"
+                  {...field}
+                />
               </FormControl>
-              <FormMessage />
+              <FormMessage className="text-md text-center text-red-400" />
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button className="h-12 w-24 rounded-l-none text-lg" type="submit">
+          Cut!
+        </Button>
       </form>
     </Form>
   )
