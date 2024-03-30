@@ -15,19 +15,19 @@ import {
 import { Input } from "@/components/ui/input"
 import formSchema from "@/components/URLForm/schema"
 
-type Schema = z.infer<typeof formSchema>
+export type URLFormValues = z.infer<typeof formSchema>
 
-export default function URLForm() {
-  const form = useForm<Schema>({
+interface URLFormProps {
+  onSubmit: ({ url }: URLFormValues) => void
+}
+
+export function URLForm({ onSubmit }: URLFormProps) {
+  const form = useForm<URLFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       url: "",
     },
   })
-
-  function onSubmit(values: Schema) {
-    alert(values)
-  }
 
   return (
     <Form {...form}>
