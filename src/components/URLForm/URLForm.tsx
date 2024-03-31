@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
+import { URLSchema } from "@/lib/schemas"
 import { Button } from "@/components/ui/button"
 import {
   Form,
@@ -13,9 +14,8 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import formSchema from "@/components/URLForm/schema"
 
-export type URLFormValues = z.infer<typeof formSchema>
+export type URLFormValues = z.infer<typeof URLSchema>
 
 interface URLFormProps {
   onSubmit: ({ url }: URLFormValues) => void
@@ -23,7 +23,7 @@ interface URLFormProps {
 
 export function URLForm({ onSubmit }: URLFormProps) {
   const form = useForm<URLFormValues>({
-    resolver: zodResolver(formSchema),
+    resolver: zodResolver(URLSchema),
     defaultValues: {
       url: "",
     },
