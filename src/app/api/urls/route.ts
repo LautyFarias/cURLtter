@@ -1,4 +1,4 @@
-import { Url } from "@/server/models"
+import { ShortURL } from "@/server/models"
 import { generateCode } from "@/server/utils"
 import { URLSchema } from "@/lib/schemas"
 
@@ -10,7 +10,7 @@ export async function POST(request: Request) {
   }
 
   const { url } = parse.data
-  const createdURL = await Url.create({ url, code: generateCode() })
+  const shortURL = await ShortURL.create({ url, code: generateCode() })
 
-  return Response.json(createdURL)
+  return Response.json(shortURL)
 }

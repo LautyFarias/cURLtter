@@ -14,7 +14,7 @@ datasource db {
   url      = "file:./dev.db"
 }
 
-model Url {
+model ShortURL {
   id        Int      @id @default(autoincrement())
   code      String   @unique
   url       String
