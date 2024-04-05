@@ -51,14 +51,15 @@
     ],
     "importOrder": [
       "<BUILTIN_MODULES>",
-      "^react$",
       "",
       "<THIRD_PARTY_MODULES>",
       "",
-      "@/server",
-      "@/lib",
       "@/components/ui",
-      "@/components"
+      "@/components",
+      "^@/(?!types)[a-z]*",
+      "",
+      "<TYPES>",
+      "@/types"
     ]
   }
 }
