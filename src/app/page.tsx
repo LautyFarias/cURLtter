@@ -1,11 +1,30 @@
 "use client"
 
+import { useState } from "react"
+
 import Title from "@/components/Title"
-import { URLForm, URLFormValues } from "@/components/URLForm"
+import { URLForm } from "@/components/URLForm"
+import { createShortURL } from "@/services/shortURL"
+
+import type { URLFormValues } from "@/components/URLForm"
+
+enum FormStatus {
+  userTyping,
+  loading,
+  submitted,
+}
 
 export default function Home() {
-  function onSubmit({ url }: URLFormValues) {
-    alert(url)
+  const [_formStatus, setFormStatus] = useState(FormStatus.userTyping)
+
+  const onSubmit = async ({ url }: URLFormValues) => {
+    setFormStatus(FormStatus.loading)
+
+    const shortURL = await createShortURL({ url })
+
+    setFormStatus(FormStatus.submitted)
+
+    alert(window.location.host + "/" + shortURL.code)
   }
 
   return (
