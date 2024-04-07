@@ -4,7 +4,11 @@ import { prisma } from "@/server/database"
 
 import type { ShortURL as ShortURLType } from "@/types/shortURL.type"
 
+type ShortURLFields = Prisma.ShortURLSelect
+type ShortURLFilter = Prisma.ShortURLWhereUniqueInput
+
 type ShortURLCreate = Prisma.ShortURLCreateInput
+type ShortURLGet = { filter: ShortURLFilter; fields?: ShortURLFields }
 
 export class ShortURL implements ShortURLType {
   id
@@ -25,5 +29,17 @@ export class ShortURL implements ShortURLType {
     })
 
     return new ShortURL(createdUrl)
+  }
+
+  static async get({ filter, fields }: ShortURLGet) {
+    const shortURL = await prisma.shortURL.findUnique({
+      select: fields,
+      where: filter,
+    })
+    console.log(shortURL)
+
+    if (!shortURL) return null
+
+    return new ShortURL(shortURL)
   }
 }
