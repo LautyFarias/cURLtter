@@ -4,6 +4,8 @@ import { ShortURL } from "@/server/models"
 
 import type { ShortURL as ShortURLType } from "@/types/shortURL.type"
 
+export const runtime = "edge"
+
 type ParamsContainer = { params: { code: ShortURLType["code"] } }
 
 export async function GET(

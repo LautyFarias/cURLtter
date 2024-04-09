@@ -1,6 +1,8 @@
+import { URLSchema } from "@/lib/schemas"
 import { ShortURL } from "@/server/models"
 import { generateCode } from "@/server/utils"
-import { URLSchema } from "@/lib/schemas"
+
+export const runtime = "edge"
 
 export async function POST(request: Request) {
   const parse = URLSchema.safeParse(await request.json())
