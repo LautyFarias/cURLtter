@@ -24,7 +24,13 @@ export default function Home() {
 
     setFormStatus(FormStatus.submitted)
 
-    alert(window.location.host + "/" + shortURL.code)
+    const env = process.env
+
+    alert(
+      (env.NEXT_PUBLIC_SHORTURL_DOMAIN || window.location.host) +
+        "/" +
+        shortURL.code
+    )
   }
 
   return (
