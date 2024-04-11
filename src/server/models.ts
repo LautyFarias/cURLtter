@@ -36,7 +36,6 @@ export class ShortURL implements ShortURLType {
       select: fields,
       where: filter,
     })
-    console.log(shortURL)
 
     if (!shortURL) return null
 
