@@ -1,8 +1,16 @@
 import { URLForm } from "@/components/URLForm/URLForm"
-import useSubmit from "@/components/URLForm/useSubmit"
+import { FormStatus, useSubmit } from "@/components/URLForm/useSubmit"
+import styles from "@/styles/loader.module.css"
 
 export default function URLFormContainer() {
   const { formStatus, onSubmit } = useSubmit()
 
-  return <URLForm onSubmit={onSubmit} />
+  return (
+    <>
+      {formStatus == FormStatus.base && <URLForm onSubmit={onSubmit} />}
+      {formStatus == FormStatus.loading && (
+        <div className={styles.loader}>https://...</div>
+      )}
+    </>
+  )
 }

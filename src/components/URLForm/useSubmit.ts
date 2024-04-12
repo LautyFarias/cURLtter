@@ -4,13 +4,13 @@ import { createShortURL } from "@/services/shortURL"
 
 import type { URLFormValues } from "@/components/URLForm/URLForm"
 
-enum FormStatus {
+export enum FormStatus {
   base,
   loading,
   submitted,
 }
 
-export default function useSubmit() {
+export function useSubmit() {
   const [formStatus, setFormStatus] = useState(FormStatus.base)
 
   const onSubmit = async ({ url }: URLFormValues) => {
@@ -23,6 +23,8 @@ export default function useSubmit() {
     const host = process.env.NEXT_PUBLIC_SHORTURL_DOMAIN || window.location.host
 
     alert(host + "/" + shortURL.code)
+
+    setFormStatus(FormStatus.base)
   }
 
   return { formStatus, onSubmit }
