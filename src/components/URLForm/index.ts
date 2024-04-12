@@ -1,3 +1,3 @@
-import { URLForm, URLFormValues } from "@/components/URLForm/URLForm"
+import URLFormContainer from "@/components/URLForm/URLFormContainer"
 
-export { URLForm, type URLFormValues }
+export { URLFormContainer }
