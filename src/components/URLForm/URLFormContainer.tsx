@@ -1,14 +1,19 @@
 import Loader from "@/components/Loader"
+import ShortURLDisplay from "@/components/ShortURLDisplay"
 import { URLForm } from "@/components/URLForm/URLForm"
 import { FormStatus, useSubmit } from "@/components/URLForm/useSubmit"
 
 export default function URLFormContainer() {
-  const { formStatus, onSubmit } = useSubmit()
+  const { formStatus, shortURL, onSubmit } = useSubmit()
 
-  return (
-    <>
-      {formStatus == FormStatus.base && <URLForm onSubmit={onSubmit} />}
-      {formStatus == FormStatus.loading && <Loader />}
-    </>
-  )
+  switch (formStatus) {
+    case FormStatus.base:
+      return <URLForm onSubmit={onSubmit} />
+
+    case FormStatus.loading:
+      return <Loader />
+
+    case FormStatus.submitted:
+      return <ShortURLDisplay url={shortURL!} />
+  }
 }

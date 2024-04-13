@@ -12,20 +12,18 @@ export enum FormStatus {
 
 export function useSubmit() {
   const [formStatus, setFormStatus] = useState(FormStatus.base)
+  const [shortURL, setShortURL] = useState<string | null>(null)
 
   const onSubmit = async ({ url }: URLFormValues) => {
     setFormStatus(FormStatus.loading)
 
     const shortURL = await createShortURL({ url })
 
-    setFormStatus(FormStatus.submitted)
-
     const host = process.env.NEXT_PUBLIC_SHORTURL_DOMAIN || window.location.host
 
-    alert(host + "/" + shortURL.code)
-
-    setFormStatus(FormStatus.base)
+    setShortURL(host + "/" + shortURL.code)
+    setFormStatus(FormStatus.submitted)
   }
 
-  return { formStatus, onSubmit }
+  return { formStatus, shortURL, onSubmit }
 }
