@@ -6,7 +6,7 @@ import URLFormContainer from "@/components/URLFormContainer"
 export default function Home() {
   return (
     <main>
-      <section className="container flex h-screen w-screen flex-col items-center gap-8 py-40">
+      <section className="duration-700 container flex h-screen w-screen flex-col items-center gap-8 py-40 animate-in fade-in">
         <Title />
         <URLFormContainer />
       </section>
