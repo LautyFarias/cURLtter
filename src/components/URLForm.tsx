@@ -2,9 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { z } from "zod"
 
-import { URLSchema } from "@/lib/schemas"
 import { Button } from "@/components/ui/button"
 import {
   Form,
@@ -14,12 +12,9 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { URLSchema } from "@/lib/schemas"
 
-export type URLFormValues = z.infer<typeof URLSchema>
-
-interface URLFormProps {
-  onSubmit: ({ url }: URLFormValues) => void
-}
+import type { URLFormProps, URLFormValues } from "@/types/URLForm.type"
 
 export function URLForm({ onSubmit }: URLFormProps) {
   const form = useForm<URLFormValues>({

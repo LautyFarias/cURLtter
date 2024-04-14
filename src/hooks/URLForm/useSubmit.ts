@@ -2,7 +2,7 @@ import { useState } from "react"
 
 import { createShortURL } from "@/services/shortURL"
 
-import type { URLFormValues } from "@/components/URLForm"
+import type { URLFormProps } from "@/types/URLForm.type"
 
 export enum FormStatus {
   base,
@@ -14,7 +14,7 @@ export function useSubmit() {
   const [formStatus, setFormStatus] = useState(FormStatus.base)
   const [shortURL, setShortURL] = useState<string | null>(null)
 
-  const onSubmit = async ({ url }: URLFormValues) => {
+  const onSubmit: URLFormProps["onSubmit"] = async ({ url }) => {
     setFormStatus(FormStatus.loading)
 
     const shortURL = await createShortURL({ url })
