@@ -1,7 +1,7 @@
 import Loader from "@/components/Loader"
 import ShortURLDisplay from "@/components/ShortURLDisplay"
-import { URLForm } from "@/components/URLForm/URLForm"
-import { FormStatus, useSubmit } from "@/components/URLForm/useSubmit"
+import { URLForm } from "@/components/URLForm"
+import { FormStatus, useSubmit } from "@/hooks/URLForm/useSubmit"
 
 export default function URLFormContainer() {
   const { formStatus, shortURL, onSubmit } = useSubmit()

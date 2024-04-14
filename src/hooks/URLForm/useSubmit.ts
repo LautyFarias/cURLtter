@@ -2,7 +2,7 @@ import { useState } from "react"
 
 import { createShortURL } from "@/services/shortURL"
 
-import type { URLFormValues } from "@/components/URLForm/URLForm"
+import type { URLFormValues } from "@/components/URLForm"
 
 export enum FormStatus {
   base,
