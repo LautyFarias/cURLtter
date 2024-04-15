@@ -1,5 +1,5 @@
 import Loader from "@/components/Loader"
-import ShortURLDisplay from "@/components/ShortURLDisplay"
+import ShortURLDisplay from "@/components/sections/ShortURLDisplay"
 import { URLForm } from "@/components/URLForm"
 import { FormStatus, useSubmit } from "@/hooks/URLForm/useSubmit"
 

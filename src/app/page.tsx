@@ -1,7 +1,7 @@
 "use client"
 
 import Title from "@/components/Title"
-import URLFormContainer from "@/components/URLFormContainer"
+import URLFormContainer from "@/components/sections/URLFormContainer"
 
 export default function Home() {
   return (
