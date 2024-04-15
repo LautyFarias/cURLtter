@@ -38,7 +38,7 @@ export function URLForm({ onSubmit }: URLFormProps) {
               <FormControl>
                 <Input
                   className="h-12 rounded-r-none text-lg focus-visible:ring-1 focus-visible:ring-offset-0"
-                  placeholder="URL"
+                  placeholder="https://"
                   {...field}
                 />
               </FormControl>
