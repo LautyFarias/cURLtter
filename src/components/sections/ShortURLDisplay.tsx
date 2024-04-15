@@ -1,4 +1,10 @@
 import { Button } from "@/components/ui/button"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 import CopyButton from "@/components/CopyButton"
 
 import type { PropsWithURL } from "@/types/URL.type"
@@ -13,7 +19,14 @@ export default function ShortURLDisplay({ url }: PropsWithURL) {
         <Button asChild>
           <a href="/">Cut another URL</a>
         </Button>
-        <Button disabled>Save URL</Button>
+        <TooltipProvider delayDuration={100}>
+          <Tooltip>
+            <TooltipTrigger>
+              <Button disabled>Save URL</Button>
+            </TooltipTrigger>
+            <TooltipContent>Coming Soon...</TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       </div>
     </section>
   )
