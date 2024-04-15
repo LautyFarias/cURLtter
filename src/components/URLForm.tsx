@@ -37,7 +37,7 @@ export function URLForm({ onSubmit }: URLFormProps) {
             <FormItem className="w-full">
               <FormControl>
                 <Input
-                  className="h-12 rounded-r-none text-lg"
+                  className="h-12 rounded-r-none text-lg focus-visible:ring-1 focus-visible:ring-offset-0"
                   placeholder="URL"
                   {...field}
                 />
@@ -46,7 +46,10 @@ export function URLForm({ onSubmit }: URLFormProps) {
             </FormItem>
           )}
         />
-        <Button className="h-12 w-24 rounded-l-none text-lg" type="submit">
+        <Button
+          className="h-12 w-24 rounded-l-none text-lg hover:text-xl focus-visible:text-xl focus-visible:ring-1 focus-visible:ring-offset-0"
+          type="submit"
+        >
           Cut!
         </Button>
       </form>
