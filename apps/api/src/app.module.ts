@@ -1,10 +1,12 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { ShortUrlsModule } from './short-urls/short-urls.module';
+import { ShortUrlsController } from './short-urls/short-urls.controller';
+import { ShortUrlsService } from './short-urls/short-urls.service';
+import { PrismaService } from './prisma.service';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [ShortUrlsModule],
+  controllers: [ShortUrlsController],
+  providers: [PrismaService, ShortUrlsService],
 })
 export class AppModule {}
