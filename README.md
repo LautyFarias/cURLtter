@@ -1,45 +1,81 @@
-# cURLtter
+# Turborepo starter
 
-![cURLtter Icon](./public/favicon.svg "cURLtter - Yet another URL s̶h̶o̶r̶t̶e̶n̶e̶r̶ cutter.")
+This is an official starter Turborepo.
 
-Yet another URL s̶h̶o̶r̶t̶e̶n̶e̶r̶ cutter.
+## Using this example
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Run the following command:
 
-## Getting Started
-
-cURLtter uses [Turso](https://turso.tech/) as database provider.
-
-To run locally this project you need create a database in it a create a `.env` file with the next variables:
-
-```bash
-TURSO_AUTH_TOKEN=ey***
-TURSO_DATABASE_URL="libsql://***.turso.io"
+```sh
+npx create-turbo@latest
 ```
 
-Then, apply the last Prisma migration:
+## What's inside?
 
-```bash
-turso db shell $DATABASE_NAME < ./prisma/migrations/$LAST_MIGRATION/migration.sql
+This Turborepo includes the following packages/apps:
+
+### Apps and Packages
+
+- `docs`: a [Next.js](https://nextjs.org/) app
+- `web`: another [Next.js](https://nextjs.org/) app
+- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
+- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+
+Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+
+### Utilities
+
+This Turborepo has some additional tools already setup for you:
+
+- [TypeScript](https://www.typescriptlang.org/) for static type checking
+- [ESLint](https://eslint.org/) for code linting
+- [Prettier](https://prettier.io) for code formatting
+
+### Build
+
+To build all apps and packages, run the following command:
+
+```
+cd my-turborepo
+pnpm build
 ```
 
-Finally, run the development server:
+### Develop
 
-```bash
+To develop all apps and packages, run the following command:
+
+```
+cd my-turborepo
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Remote Caching
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
 
-## Learn More
+By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [Turso Quickstart](https://docs.turso.tech/quickstart) - learn about how to start with Turso.
-- [Prisma + Turso](https://www.prisma.io/docs/orm/overview/databases/turso) - how to integrate Prisma ORM with Turso database.
+```
+cd my-turborepo
+npx turbo login
+```
 
-## Inspiration
+This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
 
-cURLtter tries replicate the functionalities of common URL shorteners and [Slug by pheralb](https://github.com/pheralb/slug)
+Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+
+```
+npx turbo link
+```
+
+## Useful Links
+
+Learn more about the power of Turborepo:
+
+- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
+- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
+- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
+- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
+- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
+- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
